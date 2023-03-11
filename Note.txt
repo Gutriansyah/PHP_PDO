@@ -1,0 +1,4 @@
+membuka mysql
+-> buka terminal cmd
+-> cd C:\xampp\mysql\bin
+-> mysql -uroot -p
