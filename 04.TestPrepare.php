@@ -8,6 +8,8 @@ $connection = getConnection();
 $username = "admin";
 $password = "admin";
 
+
+// * melakukan prepare query
 $sql = "SELECT * FROM admin WHERE username = :username AND password = :password";
 $result = $connection->prepare($sql);
 $result->bindParam("username", $username);
