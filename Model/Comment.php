@@ -15,7 +15,7 @@ class Comment
         $this->comment = $comment;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -25,7 +25,7 @@ class Comment
         $this->id = $id;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -35,12 +35,12 @@ class Comment
         $this->email = $email;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(?string $comment)
+    public function setComment(?string $comment): void
     {
         $this->comment = $comment;
     }
