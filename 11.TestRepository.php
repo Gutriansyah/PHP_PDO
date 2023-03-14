@@ -15,16 +15,14 @@ $connection = getConnection();
 $repository = new CommentRepositoryImpl($connection);
 
 // * membuat object dari class Model/Comment beserta parameternya
-$comment = new Comment(email: "rom@test", comment: "hyyy");
+$comment = new Comment(email: "sore@test", comment: "hyyy");
 // * memanggil function insert dari object repository yang memiliki parameter bertipe object Comment
 $newComment = $repository->insert($comment);
 // * kenapa di vardump new comment
 var_dump($newComment->getId()) . PHP_EOL;
-var_dump($newComment->getEmail()) . PHP_EOL;
-var_dump($newComment->getComment()) . PHP_EOL;
 
-// $comment = $repository->findById(10);
-// var_dump($comment);
+$comment = $repository->findById(10);
+var_dump($comment);
 
 // $comment = $repository->findAll();
 // var_dump($comment);

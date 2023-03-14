@@ -22,9 +22,10 @@ interface CommentRepository
 class CommentRepositoryImpl implements CommentRepository
 {
 
+    // * membuat property bertipe object PDO
     private PDO $connection;
 
-    // * membuat cintruc sebagai parameter object yang memiliki tipe data PDO
+    // * membuat construct dengan parameter object PDO untuk mengisi value property
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
@@ -51,11 +52,15 @@ class CommentRepositoryImpl implements CommentRepository
 
     function findById(int $id): ?Comment
     {
+        // * membuat query
         $sql = "SELECT * FROM comments WHERE id = ?";
+        // * melakukan prepare terhadap query
         $statment = $this->connection->prepare($sql);
+        // * menjalankan atau mengeksekusi query
         $statment->execute([$id]);
 
         if ($row = $statment->fetch()) {
+            // * mengembalikan object Model/Comment yang properti berasal dari query yang difetch
             return new Comment(
                 id: $row["id"],
                 email: $row["email"],
@@ -68,10 +73,13 @@ class CommentRepositoryImpl implements CommentRepository
 
     function findAll(): array
     {
+        // * melakukan query sql dan mengeksekusi query
         $sql = "SELECT * FROM comments";
         $statment = $this->connection->query($sql);
 
+
         $array = [];
+        // * mengisi variable array dengan data yang diambil dengan function fetch
         while ($row = $statment->fetch()) {
             $array[] = new Comment(
                 id: $row["id"],
@@ -79,6 +87,7 @@ class CommentRepositoryImpl implements CommentRepository
                 comment: $row["comment"]
             );
         }
+        // * mengembalikan variable array
         return $array;
     }
 }
