@@ -21,7 +21,7 @@ $result->execute([$username, $password]);
 // * menyimpan data yang di ambil menggunakan fetch ke dalam variable
 if ($row = $result->fetch()) {
     // * mengakses data yang di ambil
-    echo "Sukes Login Sebagai : " . $row["username"];
+    echo "Sukes Login Sebagai : " . $row["username"] . PHP_EOL;
 } else {
     echo "gagal";
 }
