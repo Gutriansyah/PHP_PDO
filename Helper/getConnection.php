@@ -13,5 +13,4 @@ function getConnection(): PDO
     $password = "";
 
     return new PDO("mysql:host=$host:$port;dbname=$database", $username, $password);
-    echo "Koneksi Sukses";
 }
